@@ -14,4 +14,8 @@ public class ResponseHandler {
 
         return new ResponseEntity<Object>(map, status);
     }
+
+    public static ResponseEntity<Object> generateResponse(Object responseObj, HttpStatus status) {
+        return new ResponseEntity<Object>(responseObj, status);
+    }
 }

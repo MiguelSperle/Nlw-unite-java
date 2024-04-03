@@ -20,11 +20,11 @@ public class Event {
     private String title;
 
     @Column(nullable = false) // Essa coluna não pode ser nula
-    private String detail;
+    private String details;
 
     @Column(nullable = false, unique = true) // Essa coluna não pode ser nula
     private String slug;
 
-    @Column(nullable = false, name = "maximum_attendees") // Essa coluna não pode ser nula
+    @Column(nullable = false, name="maximum_attendees") // Essa coluna não pode ser nula
     private Integer maximumAttendees;
 }
