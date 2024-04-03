@@ -1,8 +1,11 @@
 package com.miguelsperle.passin.controllers;
 
+import com.miguelsperle.passin.dtos.attendee.AttendeeResponseDTO;
 import com.miguelsperle.passin.dtos.event.CreateEventDTO;
 import com.miguelsperle.passin.dtos.event.EventIdDTO;
+import com.miguelsperle.passin.dtos.event.EventResponseDTO;
 import com.miguelsperle.passin.response.ResponseHandler;
+import com.miguelsperle.passin.services.AttendeeService;
 import com.miguelsperle.passin.services.EventService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -12,17 +15,20 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/events")
 @RequiredArgsConstructor
 public class EventController {
     private final EventService eventService;
+    private final AttendeeService attendeeService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getEvent(@PathVariable String id){
-        var event = this.eventService.getEventDetail(id);
+        EventResponseDTO eventResponseDTO = this.eventService.getEventDetail(id);
 
-        return ResponseHandler.generateResponse(event, HttpStatus.OK);
+        return ResponseHandler.generateResponse(eventResponseDTO, HttpStatus.OK);
     }
 
     @PostMapping("/create")
@@ -34,5 +40,12 @@ public class EventController {
         EventIdDTO eventId = this.eventService.createEvent(createEventDTO);
 
         return ResponseHandler.generateResponse(eventId, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/attendees/{id}") // Retorna todos os participantes do evento
+    public ResponseEntity<Object> getEventAttendees(@PathVariable String id){
+        List<AttendeeResponseDTO> attendeeResponseDTO = this.attendeeService.getEventsAttendee(id);
+
+        return ResponseHandler.generateResponse(attendeeResponseDTO, HttpStatus.OK);
     }
 }

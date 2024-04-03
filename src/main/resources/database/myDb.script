@@ -29,7 +29,7 @@ SET FILES NIO TRUE
 SET FILES NIO SIZE 256
 SET FILES LOG TRUE
 SET FILES LOG SIZE 50
-SET FILES CHECK 764
+SET FILES CHECK 2426
 SET DATABASE COLLATION "SQL_TEXT" PAD SPACE
 CREATE USER SA PASSWORD DIGEST 'd41d8cd98f00b204e9800998ecf8427e'
 ALTER USER SA SET LOCAL TRUE
@@ -58,5 +58,6 @@ INSERT INTO "flyway_schema_history" VALUES(1,'1','create-table-events','SQL','V1
 INSERT INTO "flyway_schema_history" VALUES(2,'2','create-table-attendees','SQL','V2__create-table-attendees.sql',1911608110,'SA','2024-04-02 23:05:29.047783',2,'1')
 INSERT INTO "flyway_schema_history" VALUES(3,'3','create-table-checkins','SQL','V3__create-table-checkins.sql',277259538,'SA','2024-04-02 23:05:29.058786',1,'1')
 INSERT INTO "flyway_schema_history" VALUES(4,'4','create-indexes','SQL','V4__create-indexes.sql',553901455,'SA','2024-04-02 23:05:29.068789',1,'1')
-INSERT INTO EVENTS VALUES('e27d8c9d-7edc-4776-9ca3-4517f12dcc43','','Aprendendo java','',500)
+INSERT INTO EVENTS VALUES('d4244032-8838-4425-b8a0-29871f04b6bf','Javaa','Aprendendo javaa','javaa',500)
 INSERT INTO EVENTS VALUES('e72fb69f-bf72-4594-9e8c-12ca345de526','Java','Aprendendo java','java',500)
+INSERT INTO ATTENDEES VALUES('e72fb69f-bf72-4594-9e8c-12ca345de526','Miguel Sperle','miguelsperledeveloper@gmail.com','e72fb69f-bf72-4594-9e8c-12ca345de526',NULL)
